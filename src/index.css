@@ -61,3 +61,17 @@ body {
 .todo-form button:hover {
   background: #218838; /* Более темный зеленый при наведении */
 }
+
+.task-counter {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #e9ecef; /* Светло-серый фон */
+  border-radius: 4px;
+  text-align: left; /* Или оставь center, если так лучше смотрится */
+}
+
+.task-counter h2 {
+  margin: 5px 0; /* Небольшие отступы между заголовками счетчика */
+  font-size: 0.9em; /* Чуть меньше основного заголовка */
+  color: #333; /* Темно-серый цвет текста */
+}
