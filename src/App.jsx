@@ -2,8 +2,7 @@
 import { useState } from "react";
 import ToDoList from "./components/ToDoList";
 import ToDoForm from "./components/ToDoForm";
-// Можно добавить импорт CSS, если он у тебя есть, например:
-// import './App.css';
+import './App.css'; 
 
 export default function App() {
   const [tasks, setTasks] = useState([]);

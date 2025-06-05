@@ -1,28 +1,24 @@
-// src/components/ToDoForm.jsx
-import React, { useState } from 'react'; // useState понадобится для управления вводом
+import { useState } from "react";
 
-// Принимаем addTask как пропс из App.jsx
-const ToDoForm = ({ addTask }) => {
-  const [inputValue, setInputValue] = useState(''); // Состояние для текста в поле ввода
+export default function ToDoForm({ addTask }) {
+  const [text, setText] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Предотвращаем перезагрузку страницы при отправке формы
-    if (inputValue.trim() === '') return; // Не добавляем пустые задачи
-    addTask(inputValue); // Вызываем функцию addTask из App.jsx
-    setInputValue(''); // Очищаем поле ввода после добавления
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!text.trim()) return; // Если текст пустой (после удаления пробелов), ничего не делаем
+    addTask(text); // Вызываем функцию addTask, переданную из App.jsx
+    setText(""); // Очищаем поле ввода
   };
 
   return (
     <form onSubmit={handleSubmit} className="todo-form">
       <input
         type="text"
-        placeholder="Add a new task"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        value={text} // Значение инпута привязано к состоянию text
+        onChange={(e) => setText(e.target.value)} // Обновляем состояние text при каждом изменении в инпуте
+        placeholder="Додати завдання..."
       />
-      <button type="submit">Add Task</button>
+      <button type="submit">+</button>
     </form>
   );
-};
-
-export default ToDoForm;
+}
