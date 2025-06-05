@@ -1,19 +1,13 @@
 // src/components/ToDoItem.jsx
-import React from 'react';
+// import React from 'react'; // Необязателен в новых версиях React/Vite, если не используется JSX напрямую (здесь используется)
 
-const ToDoItem = ({ task, toggleTask, deleteTask }) => {
-  // На этом этапе нам просто нужно, чтобы компонент существовал и что-то возвращал.
-  // Позже ты заменишь это на реальную разметку задачи.
-  if (!task) {
-    return null; // Если задача не передана, ничего не рендерим
-  }
-
+export default function ToDoItem({ task, toggleTask, deleteTask }) {
   return (
-    <li>
-      {task.text}
-      {/* Сюда позже добавим чекбокс и кнопку удаления */}
+    <li className={`todo-item ${task.completed ? "completed" : ""}`}>
+      <span onClick={() => toggleTask(task.id)} style={{ cursor: 'pointer', textDecoration: task.completed ? 'line-through' : 'none' }}>
+        {task.text}
+      </span>
+      <button onClick={() => deleteTask(task.id)}>Delete</button>
     </li>
   );
-};
-
-export default ToDoItem; // <--- Вот эта строка исправляет ошибку
+}
